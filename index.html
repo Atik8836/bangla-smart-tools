@@ -6,275 +6,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bangla Smart Tools</title>
 <style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f1f5fb;
-  color: #243247;
-}
-header {
-  background: #1455c0;
-  color: white;
-  text-align: center;
-  padding: 28px 12px;
-}
-header h1 { margin: 0 0 10px; }
-.container {
-  max-width: 850px;
-  margin: 25px auto;
-  padding: 15px;
-}
-.welcome, .calculator, .tool {
-  background: white;
-  padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0 3px 12px #00000010;
-  margin-bottom: 20px;
-}
-.welcome { text-align: center; }
-.calculator {
-  max-width: 380px;
-  margin: 25px auto;
-}
-.display {
-  width: 100%;
-  padding: 17px;
-  font-size: 27px;
-  text-align: right;
-  border: 1px solid #ccd5e2;
-  border-radius: 9px;
-  margin-bottom: 12px;
-}
-.keys {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 9px;
-}
-.keys button {
-  padding: 17px 5px;
-  border: none;
-  border-radius: 9px;
-  background: #e9eff8;
-  font-size: 20px;
-  cursor: pointer;
-}
-.keys button:hover { background: #d6e3f7; }
-.keys .operator { background: #dce9ff; color: #1455c0; }
-.keys .equal { background: #1455c0; color: white; }
-.keys .clear { background: #ffe3e3; color: #b42318; }
-.tools {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-}
-.tool { text-align: center; margin: 0; }
-.tool h3 { color: #1455c0; }
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #64748b;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5f9;color:#172033}
+header{background:#123c69;color:white;text-align:center;padding:30px 15px}
+header h1{margin:0 0 10px}
+main{max-width:900px;margin:25px auto;padding:15px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:white;padding:20px;border-radius:14px;box-shadow:0 3px 12px #0001}
+h2{color:#123c69;margin-top:0}
+input,button{width:100%;padding:12px;margin:7px 0;border:1px solid #cbd5e1;border-radius:8px;font-size:16px}
+button{background:#1769aa;color:white;border:0;cursor:pointer}
+button:hover{background:#0e4d80}
+.result{font-weight:bold;color:#087443;min-height:24px}
+footer{text-align:center;padding:25px;color:#64748b}
 </style>
 </head>
 <body>
-
 <header>
-  <h1>Bangla Smart Tools</h1>
-  <p>আপনার দৈনন্দিন কাজের সহজ অনলাইন টুলস</p>
+<h1>Bangla Smart Tools</h1>
+<p>আপনার দৈনন্দিন কাজের সহজ অনলাইন টুলস</p>
 </header>
 
-<div class="container">
+<main>
+<div class="tools">
 
-  <div class="welcome">
-    <h2>স্বাগতম! 👋</h2>
-    <p>বাংলা ও ইংরেজিতে প্রয়োজনীয় অনলাইন টুলস ব্যবহার করুন সহজেই।</p>
-  </div>
-
-  <section class="calculator">
-    <h2 style="text-align:center;color:#1455c0;">🧮 Calculator</h2>
-    <input class="display" id="display" value="0" readonly>
-
-    <div class="keys">
-      <button class="clear" onclick="clearDisplay()">AC</button>
-      <button onclick="backspace()">⌫</button>
-      <button class="operator" onclick="add('/')">÷</button>
-      <button class="operator" onclick="add('*')">×</button>
-
-      <button onclick="add('7')">7</button>
-      <button onclick="add('8')">8</button>
-      <button onclick="add('9')">9</button>
-      <button class="operator" onclick="add('-')">−</button>
-
-      <button onclick="add('4')">4</button>
-      <button onclick="add('5')">5</button>
-      <button onclick="add('6')">6</button>
-      <button class="operator" onclick="add('+')">+</button>
-
-      <button onclick="add('1')">1</button>
-      <button onclick="add('2')">2</button>
-      <button onclick="add('3')">3</button>
-      <button onclick="add('.')">.</button>
-
-      <button onclick="add('0')">0</button>
-      <button onclick="add('00')">00</button>
-      <button class="equal" style="grid-column:span 2" onclick="calculate()">=</button>
-    </div>
-  </section>
-
-  <h2 style="text-align:center;">আমাদের অন্যান্য টুলস</h2>
-
-  <div class="tools">
-    <div class="tool">
-      <h3>📅 Age Calculator</h3>
-      <p>বয়স হিসাব করার টুল</p>
-    </div>
-    <div class="tool">
-      <h3>🔤 Word Counter</h3>
-      <p>শব্দ ও অক্ষর গণনার টুল</p>
-    </div>
-    <div class="tool">
-      <h3>🔄 Unit Converter</h3>
-      <p>বিভিন্ন একক রূপান্তরের টুল</p>
-    </div>
-    <div class="tool">
-      <h3>💰 Salary Calculator</h3>
-      <p>বেতন হিসাব করার টুল</p>
-    </div>
-  </div>
-
-</div>
-
-<footer>
-  © 2026 Bangla Smart Tools | All Rights Reserved
-</footer>
-
-<script>
-let expression = "";
-const display = document.getElementById("display");
-
-function add(value) {
-  expression += value;
-  display.value = expression;
-}
-
-function clearDisplay() {
-  expression = "";
-  display.value = "0";
-}
-
-function backspace() {
-  expression = expression.slice(0, -1);
-  display.value = expression || "0";
-}
-
-function calculate() {
-  try {
-    if (!/^[0-9+\-*/.() ]+$/.test(expression)) {
-      throw new Error("Invalid");
-    }
-    let result = Function('"use strict"; return (' + expression + ')')();
-    if (!Number.isFinite(result)) throw new Error("Invalid");
-    display.value = result;
-    expression = String(result);
-  } catch {
-    display.value = "ভুল হিসাব!";
-    expression = "";
-  }
-}
-</script>
-<section class="tool-card" id="age-calculator">
-  <h2>🎂 বয়স ক্যালকুলেটর</h2>
-  <p>জন্মতারিখ নির্বাচন করো:</p>
-  <input type="date" id="birthDate">
-  <button onclick="calculateAge()">বয়স হিসাব করো</button>
-  <h3 id="ageResult">তোমার বয়স এখানে দেখাবে</h3>
+<section class="card">
+<h2>🧮 Calculator</h2>
+<input id="calcDisplay" placeholder="যেমন: 100+50">
+<button onclick="calculate()">হিসাব করুন</button>
+<p class="result" id="calcResult"></p>
 </section>
 
+<section class="card">
+<h2>🎂 Age Calculator</h2>
+<input type="date" id="birthDate">
+<button onclick="calculateAge()">বয়স হিসাব করুন</button>
+<p class="result" id="ageResult"></p>
+</section>
+
+<section class="card">
+<h2>📝 Word Counter</h2>
+<input id="wordText" placeholder="এখানে লিখুন">
+<button onclick="countWords()">শব্দ গণনা করুন</button>
+<p class="result" id="wordResult"></p>
+</section>
+
+<section class="card">
+<h2>📏 Unit Converter</h2>
+<input type="number" id="meterValue" placeholder="মিটার লিখুন">
+<button onclick="convertUnit()">ফলাফল দেখুন</button>
+<p class="result" id="unitResult"></p>
+</section>
+
+<section class="card">
+<h2>💰 Salary Calculator</h2>
+<input type="number" id="salary" placeholder="মূল বেতন">
+<input type="number" id="bonus" placeholder="অতিরিক্ত টাকা">
+<input type="number" id="deduction" placeholder="কর্তন">
+<button onclick="calculateSalary()">বেতন হিসাব করুন</button>
+<p class="result" id="salaryResult"></p>
+</section>
+
+</div>
+</main>
+
+<footer>© 2026 Bangla Smart Tools | All Rights Reserved</footer>
+
 <script>
-function calculateAge() {
-  const input = document.getElementById("birthDate").value;
-  const result = document.getElementById("ageResult");
+function calculate(){
+try{
+const expression=document.getElementById("calcDisplay").value;
+if(!/^[0-9+\-*/().\s]+$/.test(expression)) throw new Error();
+const result=Function('"use strict";return ('+expression+')')();
+if(!Number.isFinite(result)) throw new Error();
+document.getElementById("calcResult").textContent="ফলাফল: "+result;
+}catch(e){
+document.getElementById("calcResult").textContent="সঠিক হিসাব লিখুন";
+}
+}
 
-  if (!input) {
-    result.textContent = "প্রথমে জন্মতারিখ নির্বাচন করো।";
-    return;
-  }
+function calculateAge(){
+const value=document.getElementById("birthDate").value;
+const result=document.getElementById("ageResult");
+if(!value){result.textContent="জন্মতারিখ নির্বাচন করুন";return;}
+const birth=new Date(value+"T00:00:00");
+const today=new Date();
+if(birth>today){result.textContent="ভবিষ্যতের তারিখ দেওয়া যাবে না";return;}
+let years=today.getFullYear()-birth.getFullYear();
+let months=today.getMonth()-birth.getMonth();
+let days=today.getDate()-birth.getDate();
+if(days<0){
+months--;
+days+=new Date(today.getFullYear(),today.getMonth(),0).getDate();
+}
+if(months<0){years--;months+=12;}
+result.textContent=`আপনার বয়স: ${years} বছর, ${months} মাস, ${days} দিন`;
+}
 
-  const birth = new Date(input + "T00:00:00");
-  const today = new Date();
+function countWords(){
+const text=document.getElementById("wordText").value.trim();
+const words=text?text.split(/\s+/).length:0;
+document.getElementById("wordResult").textContent="শব্দ: "+words+" | অক্ষর: "+text.length;
+}
 
-  if (birth > today) {
-    result.textContent = "ভবিষ্যতের জন্মতারিখ দেওয়া যাবে না।";
-    return;
-  }
+function convertUnit(){
+const value=Number(document.getElementById("meterValue").value);
+document.getElementById("unitResult").textContent=
+Number.isFinite(value)&&document.getElementById("meterValue").value!==""
+?value+" মিটার = "+(value*100).toFixed(2)+" সেন্টিমিটার"
+:"সঠিক সংখ্যা লিখুন";
+}
 
-  let years = today.getFullYear() - birth.getFullYear();
-  let months = today.getMonth() - birth.getMonth();
-  let days = today.getDate() - birth.getDate();
-
-  if (days < 0) {
-    months--;
-    days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
-  }
-
-  if (months < 0) {
-    years--;
-    months += 12;
-  }
-
-  result.textContent = `তোমার বয়স: ${years} বছর, ${months} মাস, ${days} দিন`;
+function calculateSalary(){
+const salary=Number(document.getElementById("salary").value)||0;
+const bonus=Number(document.getElementById("bonus").value)||0;
+const deduction=Number(document.getElementById("deduction").value)||0;
+document.getElementById("salaryResult").textContent=
+"মোট বেতন: ৳"+(salary+bonus-deduction).toFixed(2);
 }
 </script>
 </body>
 </html>
-<section class="tool-card" id="age-calculator">
-  <h2>🎂 বয়স ক্যালকুলেটর</h2>
-  <p>তোমার জন্মতারিখ নির্বাচন করো:</p>
-
-  <input type="date" id="birthDate">
-
-  <button onclick="calculateAge()">বয়স হিসাব করো</button>
-
-  <h3 id="ageResult">তোমার বয়স এখানে দেখাবে</h3>
-</section>
-
-<script>
-function calculateAge() {
-  const input = document.getElementById("birthDate").value;
-  const result = document.getElementById("ageResult");
-
-  if (!input) {
-    result.textContent = "প্রথমে জন্মতারিখ নির্বাচন করো।";
-    return;
-  }
-
-  const birth = new Date(input + "T00:00:00");
-  const today = new Date();
-
-  if (birth > today) {
-    result.textContent = "ভবিষ্যতের জন্মতারিখ দেওয়া যাবে না।";
-    return;
-  }
-
-  let years = today.getFullYear() - birth.getFullYear();
-  let months = today.getMonth() - birth.getMonth();
-  let days = today.getDate() - birth.getDate();
-
-  if (days < 0) {
-    months--;
-    const previousMonth = new Date(
-      today.getFullYear(), today.getMonth(), 0
-    );
-    days += previousMonth.getDate();
-  }
-
-  if (months < 0) {
-    years--;
-    months += 12;
-  }
-
-  result.textContent =
-    `তোমার বয়স: ${years} বছর, ${months} মাস, ${days} দিন`;
-}
-</script>
