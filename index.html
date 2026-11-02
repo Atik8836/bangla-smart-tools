@@ -1,33 +1,100 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangla Smart Tools</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            text-align: center;
-            padding: 30px 15px;
-        }
-        h1 { color: #1456a0; }
-        .tool {
-            background: white;
-            padding: 20px;
-            margin: 15px auto;
-            max-width: 400px;
-            border-radius: 12px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bangla Smart Tools</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f5fb;
+  color: #243247;
+}
+header {
+  background: #1455c0;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+header h1 { margin: 0 0 10px; }
+header p { margin: 0; }
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 15px;
+}
+.welcome {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 3px 12px #00000010;
+}
+.tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 25px;
+}
+.tool {
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 3px 12px #00000010;
+}
+.tool h3 { color: #1455c0; }
+.tool p { color: #64748b; }
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #64748b;
+}
+</style>
 </head>
 <body>
-    <h1>Bangla Smart Tools</h1>
-    <p>আপনার দৈনন্দিন কাজের সহজ অনলাইন টুলস</p>
 
+<header>
+  <h1>Bangla Smart Tools</h1>
+  <p>আপনার দৈনন্দিন কাজের সহজ অনলাইন টুলস</p>
+</header>
+
+<div class="container">
+  <div class="welcome">
+    <h2>স্বাগতম! 👋</h2>
+    <p>বাংলা ও ইংরেজিতে প্রয়োজনীয় অনলাইন টুলস ব্যবহার করুন সহজেই।</p>
+  </div>
+
+  <div class="tools">
     <div class="tool">
-        <h2>স্বাগতম!</h2>
-        <p>আমাদের ওয়েবসাইট খুব শিগগিরই চালু হবে।</p>
+      <h3>🧮 Calculator</h3>
+      <p>সহজ হিসাব-নিকাশের টুল</p>
     </div>
+    <div class="tool">
+      <h3>📅 Age Calculator</h3>
+      <p>বয়স হিসাব করার টুল</p>
+    </div>
+    <div class="tool">
+      <h3>🔤 Word Counter</h3>
+      <p>শব্দ ও অক্ষর গণনার টুল</p>
+    </div>
+    <div class="tool">
+      <h3>🔄 Unit Converter</h3>
+      <p>বিভিন্ন একক রূপান্তরের টুল</p>
+    </div>
+    <div class="tool">
+      <h3>💰 Salary Calculator</h3>
+      <p>বেতন হিসাব করার টুল</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Bangla Smart Tools | All Rights Reserved</p>
+</footer>
+
 </body>
 </html>
