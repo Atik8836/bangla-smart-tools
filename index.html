@@ -17,37 +17,59 @@ header {
   background: #1455c0;
   color: white;
   text-align: center;
-  padding: 30px 15px;
+  padding: 28px 12px;
 }
 header h1 { margin: 0 0 10px; }
-header p { margin: 0; }
 .container {
-  max-width: 900px;
-  margin: 30px auto;
+  max-width: 850px;
+  margin: 25px auto;
   padding: 15px;
 }
-.welcome {
-  background: white;
-  padding: 25px;
-  border-radius: 14px;
-  text-align: center;
-  box-shadow: 0 3px 12px #00000010;
-}
-.tools {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  margin-top: 25px;
-}
-.tool {
+.welcome, .calculator, .tool {
   background: white;
   padding: 22px;
-  border-radius: 12px;
-  text-align: center;
+  border-radius: 14px;
   box-shadow: 0 3px 12px #00000010;
+  margin-bottom: 20px;
 }
+.welcome { text-align: center; }
+.calculator {
+  max-width: 380px;
+  margin: 25px auto;
+}
+.display {
+  width: 100%;
+  padding: 17px;
+  font-size: 27px;
+  text-align: right;
+  border: 1px solid #ccd5e2;
+  border-radius: 9px;
+  margin-bottom: 12px;
+}
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+}
+.keys button {
+  padding: 17px 5px;
+  border: none;
+  border-radius: 9px;
+  background: #e9eff8;
+  font-size: 20px;
+  cursor: pointer;
+}
+.keys button:hover { background: #d6e3f7; }
+.keys .operator { background: #dce9ff; color: #1455c0; }
+.keys .equal { background: #1455c0; color: white; }
+.keys .clear { background: #ffe3e3; color: #b42318; }
+.tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+.tool { text-align: center; margin: 0; }
 .tool h3 { color: #1455c0; }
-.tool p { color: #64748b; }
 footer {
   text-align: center;
   padding: 25px;
@@ -63,16 +85,46 @@ footer {
 </header>
 
 <div class="container">
+
   <div class="welcome">
     <h2>স্বাগতম! 👋</h2>
     <p>বাংলা ও ইংরেজিতে প্রয়োজনীয় অনলাইন টুলস ব্যবহার করুন সহজেই।</p>
   </div>
 
-  <div class="tools">
-    <div class="tool">
-      <h3>🧮 Calculator</h3>
-      <p>সহজ হিসাব-নিকাশের টুল</p>
+  <section class="calculator">
+    <h2 style="text-align:center;color:#1455c0;">🧮 Calculator</h2>
+    <input class="display" id="display" value="0" readonly>
+
+    <div class="keys">
+      <button class="clear" onclick="clearDisplay()">AC</button>
+      <button onclick="backspace()">⌫</button>
+      <button class="operator" onclick="add('/')">÷</button>
+      <button class="operator" onclick="add('*')">×</button>
+
+      <button onclick="add('7')">7</button>
+      <button onclick="add('8')">8</button>
+      <button onclick="add('9')">9</button>
+      <button class="operator" onclick="add('-')">−</button>
+
+      <button onclick="add('4')">4</button>
+      <button onclick="add('5')">5</button>
+      <button onclick="add('6')">6</button>
+      <button class="operator" onclick="add('+')">+</button>
+
+      <button onclick="add('1')">1</button>
+      <button onclick="add('2')">2</button>
+      <button onclick="add('3')">3</button>
+      <button onclick="add('.')">.</button>
+
+      <button onclick="add('0')">0</button>
+      <button onclick="add('00')">00</button>
+      <button class="equal" style="grid-column:span 2" onclick="calculate()">=</button>
     </div>
+  </section>
+
+  <h2 style="text-align:center;">আমাদের অন্যান্য টুলস</h2>
+
+  <div class="tools">
     <div class="tool">
       <h3>📅 Age Calculator</h3>
       <p>বয়স হিসাব করার টুল</p>
@@ -90,11 +142,47 @@ footer {
       <p>বেতন হিসাব করার টুল</p>
     </div>
   </div>
+
 </div>
 
 <footer>
-  <p>© 2026 Bangla Smart Tools | All Rights Reserved</p>
+  © 2026 Bangla Smart Tools | All Rights Reserved
 </footer>
+
+<script>
+let expression = "";
+const display = document.getElementById("display");
+
+function add(value) {
+  expression += value;
+  display.value = expression;
+}
+
+function clearDisplay() {
+  expression = "";
+  display.value = "0";
+}
+
+function backspace() {
+  expression = expression.slice(0, -1);
+  display.value = expression || "0";
+}
+
+function calculate() {
+  try {
+    if (!/^[0-9+\-*/.() ]+$/.test(expression)) {
+      throw new Error("Invalid");
+    }
+    let result = Function('"use strict"; return (' + expression + ')')();
+    if (!Number.isFinite(result)) throw new Error("Invalid");
+    display.value = result;
+    expression = String(result);
+  } catch {
+    display.value = "ভুল হিসাব!";
+    expression = "";
+  }
+}
+</script>
 
 </body>
 </html>
