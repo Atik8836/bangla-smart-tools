@@ -186,3 +186,53 @@ function calculate() {
 
 </body>
 </html>
+<section class="tool-card" id="age-calculator">
+  <h2>🎂 বয়স ক্যালকুলেটর</h2>
+  <p>তোমার জন্মতারিখ নির্বাচন করো:</p>
+
+  <input type="date" id="birthDate">
+
+  <button onclick="calculateAge()">বয়স হিসাব করো</button>
+
+  <h3 id="ageResult">তোমার বয়স এখানে দেখাবে</h3>
+</section>
+
+<script>
+function calculateAge() {
+  const input = document.getElementById("birthDate").value;
+  const result = document.getElementById("ageResult");
+
+  if (!input) {
+    result.textContent = "প্রথমে জন্মতারিখ নির্বাচন করো।";
+    return;
+  }
+
+  const birth = new Date(input + "T00:00:00");
+  const today = new Date();
+
+  if (birth > today) {
+    result.textContent = "ভবিষ্যতের জন্মতারিখ দেওয়া যাবে না।";
+    return;
+  }
+
+  let years = today.getFullYear() - birth.getFullYear();
+  let months = today.getMonth() - birth.getMonth();
+  let days = today.getDate() - birth.getDate();
+
+  if (days < 0) {
+    months--;
+    const previousMonth = new Date(
+      today.getFullYear(), today.getMonth(), 0
+    );
+    days += previousMonth.getDate();
+  }
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  result.textContent =
+    `তোমার বয়স: ${years} বছর, ${months} মাস, ${days} দিন`;
+}
+</script>
